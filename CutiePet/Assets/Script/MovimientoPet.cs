@@ -1,25 +1,27 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class MovimientoPet : MonoBehaviour
 {
-    public float moveLeft;
-    public float moveRight;
-    public bool itsMoving;
-    public Rigidbody petBody;
-    void Start()
-    {
-        petBody = GetComponent<Rigidbody>();
-        itsMoving = false;
-    }
+    [SerializeField]
+    bool buttonPress = false;
+    [SerializeField]
+    GameObject pet;
+    public Vector3 force;
+    
 
-    public void Movement()
+
+    public void Mover(float movimiento)
     {
-        moveLeft = -speed;
+        Vector3 pos = new Vector3(movimiento, 0f, 0f);
+        pet.transform.Translate(pos * Time.deltaTime);
     }
-    void Update()
+    private void Update()
     {
         
     }
+
+   
 }
